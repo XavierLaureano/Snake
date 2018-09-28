@@ -39,7 +39,7 @@ public class Player {
 
     public void tick(){
         moveCounter++;
-        if(moveCounter>=5) 
+        if(moveCounter>=4) 
         {
             checkCollisionAndMove();
             moveCounter = speed;
@@ -126,7 +126,7 @@ public class Player {
         Random r = new Random();
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
-                g.setColor(Color.WHITE);
+                g.setColor(Color.BLUE);
 
                 if(playeLocation[i][j]||handler.getWorld().appleLocation[i][j]){
                     g.fillRect((i*handler.getWorld().GridPixelsize),
