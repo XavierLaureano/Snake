@@ -241,7 +241,6 @@ public class Player {
                             tail=(new Tail(handler.getWorld().body.getLast().x+1,this.yCoord,handler));
                         }
                     }
-
                 }
                 break;
         }

@@ -51,7 +51,6 @@ public class KeyManager implements KeyListener {
 		moreSpeed = keys[KeyEvent.VK_EQUALS];		
 
 		pbutt = keys[KeyEvent.VK_ESCAPE];
-
 	}
 
 	@Override

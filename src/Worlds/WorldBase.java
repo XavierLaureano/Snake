@@ -35,7 +35,6 @@ public abstract class WorldBase {
     protected Apple apple;
     public Boolean[][] appleLocation;
 
-
     public Boolean[][] playerLocation;
 
     public LinkedList<Tail> body = new LinkedList<>();

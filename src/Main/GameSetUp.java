@@ -8,7 +8,6 @@ import Game.GameStates.State;
 import Input.KeyManager;
 import Input.MouseManager;
 import Resources.Images;
-
 import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
