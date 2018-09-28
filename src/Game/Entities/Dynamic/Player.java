@@ -19,6 +19,8 @@ public class Player {
     public int yCoord;
 
     public int moveCounter;
+    private int score;
+    private int speed;
 
     public String direction;//is your first name one?
 
@@ -27,6 +29,8 @@ public class Player {
         xCoord = 0;
         yCoord = 0;
         moveCounter = 0;
+        score = 0;
+        speed = 0;
         direction= "Right";
         justAte = false;
         lenght= 1;
@@ -35,19 +39,36 @@ public class Player {
 
     public void tick(){
         moveCounter++;
-        if(moveCounter>=5) {
+        if(moveCounter>=5) 
+        {
             checkCollisionAndMove();
-            moveCounter=0;
+            moveCounter = speed;
         }
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)){
-            direction="Up";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){
-            direction="Down";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)){
-            direction="Left";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)){
-            direction="Right";
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP))  { direction="Up";}
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){ direction="Down";}
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)){ direction="Left";}
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)){direction="Right";}
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_N))
+        {
+        	justAte = true;
+        	handler.getWorld().body.addFirst(new Tail (xCoord, yCoord, handler));
+        	score++;
         }
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS))
+        {
+        	checkCollisionAndMove();
+        	speed -= 2;
+        }
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS))
+        {
+        	checkCollisionAndMove();
+        	speed += 2;
+        }
+        
 
     }
 
@@ -90,6 +111,7 @@ public class Player {
 
         if(handler.getWorld().appleLocation[xCoord][yCoord]){
             Eat();
+            score++;
         }
 
         if(!handler.getWorld().body.isEmpty()) {
@@ -244,5 +266,13 @@ public class Player {
 
     public void setJustAte(boolean justAte) {
         this.justAte = justAte;
+    }
+    
+    public void highScore (Graphics g) 
+    {
+    	g.setColor(Color.CYAN);
+    	g.setFont(new Font ("Times New Roman",1, 40));
+    	g.drawString(String.valueOf(score), 740, 770);
+    	
     }
 }

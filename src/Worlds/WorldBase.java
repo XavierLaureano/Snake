@@ -3,10 +3,13 @@ package Worlds;
 import Game.Entities.Dynamic.Player;
 import Game.Entities.Dynamic.Tail;
 import Game.Entities.Static.Apple;
+import Game.GameStates.State;
 import Main.Handler;
 
 import java.awt.*;
 import java.util.LinkedList;
+
+import com.sun.glass.events.KeyEvent;
 
 
 /**
@@ -45,10 +48,12 @@ public abstract class WorldBase {
 
 
     }
-    public void tick(){
-
-
-
+    public void tick()
+    {
+    	if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)) 
+    	{
+    		State.setState(handler.getGame().pauseState);
+    	}
     }
 
     public void render(Graphics g){
