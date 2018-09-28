@@ -269,9 +269,8 @@ public class Player {
     
     public void highScore (Graphics g) 
     {
-    	g.setColor(Color.CYAN);
-    	g.setFont(new Font ("Times New Roman",1, 40));
-    	g.drawString(String.valueOf(score), 740, 770);
-    	
+    	g.setColor(Color.BLACK);
+    	g.setFont(new Font ("Times New Roman", 1, 20));
+    	g.drawString(String.valueOf(score), 450, 497);
     }
 }
