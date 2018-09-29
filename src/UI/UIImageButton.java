@@ -11,7 +11,7 @@ public class UIImageButton extends UIObject{
     private ClickListlener clicker;
 
     public UIImageButton(float x, float y, int width, int height, BufferedImage[] images,ClickListlener clicker ) {
-        super(x, y, width, height);
+        super(x, 40, width, height);
         this.images=images;
         this.clicker=clicker;
     }
@@ -26,13 +26,13 @@ public class UIImageButton extends UIObject{
     public void render(Graphics g) {
         if(active){
             if(images.length==3) {
-                g.drawImage(images[2], (int) x, (int) y, width, heith, null);
+                g.drawImage(images[2], (int) x, (int) 40, width, heith, null);
             }
         }
         else if(hovering){
-            g.drawImage(images[1],(int)x,(int)y,width,heith,null);
+            g.drawImage(images[1],(int)x,(int)40,width,heith,null);
         }else{
-            g.drawImage(images[0],(int)x,(int)y,width,heith,null);
+            g.drawImage(images[0],(int)x,(int)40,width,heith,null);
 
         }
     }

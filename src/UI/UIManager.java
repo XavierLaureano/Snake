@@ -17,7 +17,7 @@ public class UIManager {
     public UIManager(Handler handler){
         this.handler=handler;
         objects = new ArrayList<>();
-    }
+    } 
 
     public void tick(){
         for(UIObject o: objects){
