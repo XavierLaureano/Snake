@@ -21,6 +21,11 @@ public class Player {
     public int moveCounter;
     private int score;
     private int speed;
+    
+    private int snakeDirectionUp;
+    private int snakeDirectionDown;
+    private int snakeDirectionLeft;
+    private int snakeDirectionRight;
 
     public String direction;//is your first name one?
 
@@ -34,21 +39,46 @@ public class Player {
         direction= "Right";
         justAte = false;
         lenght= 1;
+        snakeDirectionUp = 5;
+        snakeDirectionDown = 2;
+        snakeDirectionLeft = 1;
+        snakeDirectionRight = 3;
 
     }
 
     public void tick(){
         moveCounter++;
-        if(moveCounter>=4) 
+        if(moveCounter>=5) 
         {
             checkCollisionAndMove();
             moveCounter = speed;
         }
         
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP))  { direction="Up";}
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){ direction="Down";}
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)){ direction="Left";}
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)){direction="Right";}
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP) && snakeDirectionUp == 5 && snakeDirectionDown == 2){
+        	direction="Up";
+            snakeDirectionUp = 5;
+            snakeDirectionDown = 0;
+            snakeDirectionLeft = 1;
+            snakeDirectionRight = 3;
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN) && snakeDirectionUp == 5 && snakeDirectionDown == 2){
+            direction="Down";
+            snakeDirectionUp = 0;
+            snakeDirectionDown = 2;
+            snakeDirectionLeft = 1;
+            snakeDirectionRight = 3;
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT) && snakeDirectionLeft == 1 && snakeDirectionRight == 3){
+            direction="Left";
+            snakeDirectionUp = 5;
+            snakeDirectionDown = 2;
+            snakeDirectionLeft = 1;
+            snakeDirectionRight = 0;
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) && snakeDirectionLeft == 1 && snakeDirectionRight == 3){
+            direction="Right";
+            snakeDirectionUp = 5;
+            snakeDirectionDown = 2;
+            snakeDirectionLeft = 0;
+            snakeDirectionRight = 3;
+        }
         
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_N))
         {
@@ -68,8 +98,6 @@ public class Player {
         	checkCollisionAndMove();
         	speed += 2;
         }
-        
-
     }
 
     public void checkCollisionAndMove(){
