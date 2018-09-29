@@ -21,9 +21,6 @@ public class DisplayScreen {
         this.title = title;
         this.width = width;
         this.height = height;
-
-
-
         createDisplay();
     }
 

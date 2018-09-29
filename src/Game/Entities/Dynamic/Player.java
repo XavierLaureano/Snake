@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import Game.GameStates.State;
+
 /**
  * Created by AlexVR on 7/2/2018.
  */
@@ -43,7 +45,6 @@ public class Player {
         snakeDirectionDown = 2;
         snakeDirectionLeft = 1;
         snakeDirectionRight = 3;
-
     }
 
     public void tick(){
@@ -104,10 +105,12 @@ public class Player {
         handler.getWorld().playerLocation[xCoord][yCoord]=false;
         int x = xCoord;
         int y = yCoord;
+        
         switch (direction){
             case "Left":
                 if(xCoord==0){
                     kill();
+                    State.setState(handler.getGame().gameOverState);
                 }else{
                     xCoord--;
                 }
@@ -115,6 +118,7 @@ public class Player {
             case "Right":
                 if(xCoord==handler.getWorld().GridWidthHeightPixelCount-1){
                     kill();
+                    State.setState(handler.getGame().gameOverState);
                 }else{
                     xCoord++;
                 }
@@ -122,6 +126,7 @@ public class Player {
             case "Up":
                 if(yCoord==0){
                     kill();
+                    State.setState(handler.getGame().gameOverState);
                 }else{
                     yCoord--;
                 }
@@ -129,13 +134,20 @@ public class Player {
             case "Down":
                 if(yCoord==handler.getWorld().GridWidthHeightPixelCount-1){
                     kill();
+                    State.setState(handler.getGame().gameOverState);
                 }else{
                     yCoord++;
                 }
                 break;
         }
+        
         handler.getWorld().playerLocation[xCoord][yCoord]=true;
-
+        for (int i = 0; i <= handler.getWorld().body.size()-1; i++) {
+       	 if (xCoord == handler.getWorld().body.get(i).x && yCoord == handler.getWorld().body.get(i).y) {
+       		 kill();
+       		State.setState(handler.getGame().gameOverState);
+       	 }
+       }
 
         if(handler.getWorld().appleLocation[xCoord][yCoord]){
             Eat();
