@@ -3,6 +3,7 @@ package Main;
 import Display.DisplayScreen;
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
+import Game.GameStates.GameOverState;
 import Game.GameStates.PauseState;
 import Game.GameStates.State;
 import Input.KeyManager;
@@ -22,6 +23,7 @@ import java.io.InputStream;
 
 public class GameSetUp implements Runnable {
     private DisplayScreen display;
+    
     private int width, height;
     public String title;
 
@@ -81,6 +83,7 @@ public class GameSetUp implements Runnable {
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
+        gameOverState = new GameOverState(handler);
 
         State.setState(menuState);
 
