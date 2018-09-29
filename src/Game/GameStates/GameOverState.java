@@ -4,9 +4,7 @@ import Resources.Images;
 import UI.UIImageButton;
 import UI.UIManager;
  import java.awt.*;
- /**
- * Created by AlexVR on 7/1/2018.
- */
+
 public class GameOverState extends State {
      private int count = 0;
     private UIManager uiManager;
@@ -15,9 +13,14 @@ public class GameOverState extends State {
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUimanager(uiManager);
         
-        uiManager.addObjects(new UIImageButton(376, 423+(64+16), 256, 128, Images.BTitle, () -> {
+        uiManager.addObjects(new UIImageButton(56, 223+(64+16), 128, 64, Images.Restart, () -> {
             handler.getMouseManager().setUimanager(null);
             State.setState(handler.getGame().menuState);
+        }));
+
+        uiManager.addObjects(new UIImageButton(56, (223+(64+16))+(64+16), 128, 64, Images.Quit, () -> {
+            handler.getMouseManager().setUimanager(null);
+            System.exit(0);
         }));
      }
      @Override

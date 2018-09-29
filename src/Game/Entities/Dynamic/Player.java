@@ -283,6 +283,6 @@ public class Player {
     {
     	g.setColor(Color.BLACK);
     	g.setFont(new Font ("Times New Roman", 1, 20));
-    	g.drawString(String.valueOf(score), 450, 497);
+    	g.drawString("Score: "+String.valueOf(score), 0, 498);
     }
 }
