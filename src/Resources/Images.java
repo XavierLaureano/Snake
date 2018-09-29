@@ -36,8 +36,8 @@ public class Images {
             Resume[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeP.png"));
             Quit[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitle.png"));
             Quit[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
-            Restart[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
-            Restart[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+            Restart[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Restart.png"));
+            Restart[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Restart.png"));
             butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut
             butstart[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/HoverBut.png"));//hoverbut
             butstart[2]= ImageIO.read(getClass().getResourceAsStream("/Buttons/ClickedBut.png"));//clickbut
